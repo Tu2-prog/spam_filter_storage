@@ -4,7 +4,7 @@ import { createMailEntry, deleteMailByID, getMail } from '../database/mails';
 export const create = async(req: express.Request, res: express.Response) => {
     try{
         const {content, classifier} = req.body;
-        if(!content || !classifier){
+        if(!content){
             return res.sendStatus(400);
         }
         const mail = createMailEntry({
