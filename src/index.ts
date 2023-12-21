@@ -17,10 +17,11 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 
-server.listen(8080, () => {
-    console.log("Server running on http://localhost:8080/");
+server.listen(port, () => {
+    console.log(`Server running on http://localhost:/${port}/`);
 })
 
 const MONGO_URL = "mongodb+srv://admin:U9yuhtGG24jFLXQW@mailingtexts.ytggjka.mongodb.net/Mailing?retryWrites=true&w=majority";
