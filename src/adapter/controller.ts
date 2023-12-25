@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMailEntry, deleteMailByID, getMail } from '../database/mails';
+import { createMailEntry, deleteMailByID, deleteMails, getMail } from '../database/mails';
 
 export const create = async(req: express.Request, res: express.Response) => {
     try{
@@ -39,6 +39,17 @@ export const getMails =async (req: express.Request, res: express.Response) => {
     }
     catch(error){
         console.log(error)
+        return res.sendStatus(400);
+    }
+}
+
+export const deleteAllMails = async (req: express.Request, res: express.Response) => {
+    try{
+        const deletedEntry = await deleteMails();
+        return res.json(deletedEntry);
+    }
+    catch(error){
+        console.log(error);
         return res.sendStatus(400);
     }
 }
