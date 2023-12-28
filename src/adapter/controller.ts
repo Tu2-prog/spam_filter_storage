@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMailEntry, deleteMailByID, deleteMails, getMail } from '../database/mails';
+import { createMailEntry, deleteMails, getMail } from '../database/mails';
 
 /**
  * Function to create an entry into the MongoDB.
@@ -21,25 +21,6 @@ export const create = async(req: express.Request, res: express.Response) => {
     }
     catch(error){
         console.log(error)
-        return res.sendStatus(400);
-    }
-}
-
-/**
- * Function to delete an entry in the MongoDB.
- * @param req - The request containing the id that is used to identify the document in the MongoDB that is supposed to be deleted.
- * @param res - The response of the operations stating if the operation was successfull or not.
- * @returns status code 200 if the storing was successfull and if not then it is code 400.
- */
-export const deleteMail = async (req: express.Request, res: express.Response) => {
-    try{
-        const {id} = req.params;
-
-        const deletedEntry = await deleteMailByID(id);
-        return res.json(deletedEntry);
-    }
-    catch(error){
-        console.log(error);
         return res.sendStatus(400);
     }
 }
