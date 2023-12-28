@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const MailSchema = new mongoose.Schema({
     content: {type: String, required: true},
-    classifier: {type: Number, required: true}
+    classifier: {type: Number, required: true},
+    result: {type: String, required: true},
 })
 
 export const MailModel = mongoose.model('Mail', MailSchema);

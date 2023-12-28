@@ -9,13 +9,14 @@ import { createMailEntry, deleteMails, getMail } from '../database/mails';
  */
 export const create = async(req: express.Request, res: express.Response) => {
     try{
-        const {content, classifier} = req.body;
+        const {content, classifier, result} = req.body;
         if(!content){
             return res.sendStatus(400);
         }
         const mail = createMailEntry({
             content,
-            classifier
+            classifier,
+            result
         });
         return res.status(200).json(mail).end();
     }
